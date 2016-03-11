@@ -1,0 +1,12 @@
+<h1>Product:</h1>
+
+<h2><%= @product.name %> Price: <%= @product.price %> dollars</h2>
+<p>Image:</p> 
+<%= image_tag @product.image %></a>
+<p>Description: <%= @product.description %></p>
+<p>Stock Status: <%= @product.stock_status %></p>
+<p>Delivery Time: <%= @product.delivery_time %></p>
+<a href="/products">Home Page</a>
+<p><%= link_to "Home Page", "/products" %></p>
+
+  
