@@ -16,6 +16,7 @@ class ProductsController < ApplicationController
       stock_status: params[:stock_status],
       delivery_time: params[:delivery_time]
     )
+    redirect_to '/products'
   end
 
   def show
@@ -39,11 +40,13 @@ class ProductsController < ApplicationController
       stock_status: params[:stock_status],
       delivery_time: params[:delivery_time]
     )
+    redirect_to '/products'
   end
 
   def destroy
     product_id = params[:id]
     @product = Product.find_by(id: product_id)
     @product.destroy
+    redirect_to '/products'
   end
 end
