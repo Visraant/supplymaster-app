@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    Product.create(
+    product = Product.create(
       name: params[:name],
       price: params[:price],
       image: params[:image],
@@ -16,7 +16,8 @@ class ProductsController < ApplicationController
       stock_status: params[:stock_status],
       delivery_time: params[:delivery_time]
     )
-    redirect_to '/products'
+    recipe = Recipe.last
+    redirect_to "/products/#{product.id}"
   end
 
   def show
@@ -40,13 +41,13 @@ class ProductsController < ApplicationController
       stock_status: params[:stock_status],
       delivery_time: params[:delivery_time]
     )
-    redirect_to '/products'
+    redirect_to "/products/#{@product.id}"
   end
 
   def destroy
     product_id = params[:id]
     @product = Product.find_by(id: product_id)
     @product.destroy
-    redirect_to '/products'
+    redirect_to "/products"
   end
 end
