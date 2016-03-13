@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
       stock_status: params[:stock_status],
       delivery_time: params[:delivery_time]
     )
-    recipe = Recipe.last
+    flash[:success] = "Product successfully created!"
     redirect_to "/products/#{product.id}"
   end
 
@@ -41,6 +41,7 @@ class ProductsController < ApplicationController
       stock_status: params[:stock_status],
       delivery_time: params[:delivery_time]
     )
+    flash[:success] = "Product successfully updated!"
     redirect_to "/products/#{@product.id}"
   end
 
@@ -48,6 +49,7 @@ class ProductsController < ApplicationController
     product_id = params[:id]
     @product = Product.find_by(id: product_id)
     @product.destroy
+    flash[:success] = "Product successfully deleted!"
     redirect_to "/products"
   end
 end

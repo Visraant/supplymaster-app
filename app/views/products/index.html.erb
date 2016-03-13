@@ -1,11 +1,11 @@
 <h1>All Products:</h1>
 
+<p><%= link_to "Add a new Product", "/products/new" %></p>
 <% @products.each do |product| %>
-<h2><%= product.name %></h2> <h3>Price: <%= product.price %> dollars</h3>
-<p>Image:</p> 
-<a href="/products/<%= product.id%>"><%= image_tag product.image %></a>
+<h2><%= link_to "#{product.name}", "/products/#{product.id}"  %></h2> <h3>Price: $<%= product.price %></h3>
+<%= image_tag product.image %></a>
 <p>Description: <%= product.description %></p>
 <p>Stock Status: <%= product.stock_status %></p>
 <p>Delivery Time: <%= product.delivery_time %></p>
 <% end %>
-<p><%= link_to "Add a new Product", "/products/new" %></p>
+
