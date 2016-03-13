@@ -5,6 +5,9 @@
 <p>Description: <%= @product.description %></p>
 <p>Stock Status: <%= @product.stock_status %></p>
 <p>Delivery Time: <%= @product.delivery_time %></p>
+<div class="btn-group" role="group" aria-label="...">
+  <button type="button" class="btn btn-default">Buy</button>
+</div>
 <p><%= link_to "Edit Product", "/products/#{@product.id}/edit" %></p>
 <p><%= link_to "Delete Product", "/products/#{@product.id}", method: :delete %></p>
 <p><%= link_to "Home Page", "/products" %></p>
