@@ -1,25 +1,33 @@
 <h1>All Products:</h1>
 
+<div class="row">
+
 <% @products.each do |product| %>
-<h2><%= link_to "#{product.name}", "/products/#{product.id}"  %></h2> <h3>Price: $<%= product.price %></h3>
-<%= image_tag product.image %></a>
-<p>Description: <%= product.description %></p>
-<p>Stock Status: <%= product.stock_status %></p>
-<p>Delivery Time: <%= product.delivery_time %></p>
-<!-- Split button -->
-<div class="btn-group">
-  <button type="button" class="btn btn-danger">Buy</button>
-  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span class="caret"></span>
-    <span class="sr-only">Toggle Dropdown</span>
-  </button>
-  <ul class="dropdown-menu">
-    <li><a href="/products/#{@product.id}">Product Detail</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
-    <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
-  </ul>
+
+  <div class="col-md-4">
+    <div class="well">
+     <h2><%= link_to "#{product.name}", "/products/#{product.id}"  %></h2> <h3>Price: <%= number_to_currency(product.price) %></h3>
+      <%= image_tag product.image %></a>
+      <p>Description: <%= product.description %></p>
+      <p>Stock Status: <%= product.stock_status %></p>
+      <p>Delivery Time: <%= product.delivery_time %></p>
+          <!-- Split button -->
+        <div class="btn-group">
+          <button type="button" class="btn btn-danger">Buy</button>
+          <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Edit Product", "/products/#{product.id}/edit" %></li>
+              <li><%= link_to "Add to Cart", "#" %></li>
+              <li><%= link_to "Product Detail", "#" %></li>
+              <li role="separator" class="divider"></li>
+              <li><%= link_to "Delete Product", "/products/#{product.id}", method: :delete %></li>
+            </ul>
+          </div>
+    </div>
+  </div>
+  <% end %>
 </div>
-<% end %>
 

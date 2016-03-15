@@ -1,16 +1,37 @@
 <h1>Product:</h1>
 
-<h2><%= @product.name %> Price: $<%= @product.price %></h2>
-<%= image_tag @product.image %></a>
-<p>Description: <%= @product.description %></p>
-<p>Stock Status: <%= @product.stock_status %></p>
-<p>Delivery Time: <%= @product.delivery_time %></p>
-<div class="btn-group" role="group" aria-label="...">
-  <button type="button" class="btn btn-default">Buy</button>
+<div class="row">
+  <div class="col-md-4">
+     <div class="well">
+        <h2><%= @product.name %> Price: <%= number_to_currency(@product.price) %></h2>
+        <%= image_tag @product.image %></a>
+        <p>Description: <%= @product.description %></p>
+        <p>Stock Status: <%= @product.stock_status %></p>
+        <p>Delivery Time: <%= @product.delivery_time %></p>
+        <p><%= @product.sale_message %></p>
+        <p>Tax: <%= number_to_currency(@product.tax) %></p>
+        <p>Total Cost: <%= number_to_currency(@product.total) %></p>
+                  <!-- Split button -->
+                <div class="btn-group">
+                  <button type="button" class="btn btn-danger">Buy</button>
+                  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                    <ul class="dropdown-menu">
+                      <li><%= link_to "Edit Product", "/products/#{@product.id}/edit" %></li>
+                      <li><%= link_to "Add to Cart", "#{}" %></li>
+                      <li><a href="#">Product Detail</a></li>
+                      <li role="separator" class="divider"></li>
+                      <li><%= link_to "Delete Product", "/products/#{@product.id}", method: :delete %></li>
+                    </ul>
+                  </div>
+        <!-- <p><%= link_to "Edit Product", "/products/#{@product.id}/edit" %></p>
+        <p><%= link_to "Delete Product", "/products/#{@product.id}", method: :delete %></p> -->
+        <p><%= link_to "Home Page", "/products" %></p>
+    </div>
+  </div>
 </div>
-<p><%= link_to "Edit Product", "/products/#{@product.id}/edit" %></p>
-<p><%= link_to "Delete Product", "/products/#{@product.id}", method: :delete %></p>
-<p><%= link_to "Home Page", "/products" %></p>
 
 
 
