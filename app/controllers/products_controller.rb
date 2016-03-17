@@ -6,10 +6,8 @@ class ProductsController < ApplicationController
     if sort && sort_order
       @products = Product.order(sort => sort_order)
     end
-    discount_item = params[:discount_item]
-    product_price = params[:price]
-    if product_price <= 5
-      @product.price = Product.order(product_price)
+    if params[:discount] == "true"
+      @products = Product.where("price < ?", 5)
     end
     render "index.html.erb"
   end
