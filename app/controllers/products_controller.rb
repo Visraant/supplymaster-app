@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
     @products = Product.all
     sort = params[:sort]
     sort_order = params[:sort_order]
-    if sort_order
+    if sort && sort_order
       @products = Product.order(sort => sort_order)
     end
     discount_item = params[:discount_item]
