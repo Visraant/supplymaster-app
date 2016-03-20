@@ -7,7 +7,8 @@ class OrdersController < ApplicationController
       # description: params[:description],
       # stock_status: params[:stock_status],
       # delivery_time: params[:delivery_time],
-      user_id: current_user.id
+      user_id: current_user.id,
+      product_id: params[:product_id]
     )
     
     # flash[:success] = "You bought this product!"
