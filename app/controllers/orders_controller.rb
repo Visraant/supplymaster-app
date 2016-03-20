@@ -10,8 +10,8 @@ class OrdersController < ApplicationController
       user_id: current_user.id,
       product_id: params[:product_id]
     )
-    
     # flash[:success] = "You bought this product!"
+    subtotal = params[:quantity]*product_id.price
     redirect_to "/orders/#{order.id}"
   end
 
