@@ -1,10 +1,10 @@
 class ProductsController < ApplicationController
   def index
-    if current_user
-      @products = current_user.products
-    else
-      redirect_to "/users/sign_in"
-    end
+    # if current_user
+    #   @products = current_user.products
+    # else
+    #   redirect_to "/users/sign_in"
+    # end
     @products = Product.all
     sort = params[:sort]
     sort_order = params[:sort_order]
@@ -35,11 +35,6 @@ class ProductsController < ApplicationController
   end
 
   def show
-    if current_user
-      @products = current_user.products
-    else
-      redirect_to "/users/sign_in"
-    end
     if params[:id] == "random"
       products = Product.all
       @product = products.sample

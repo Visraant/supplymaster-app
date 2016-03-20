@@ -13,6 +13,16 @@
         <p><%= @product.sale_message %></p>
         <p>Tax: <%= number_to_currency(@product.tax) %></p>
         <p>Total Cost: <%= number_to_currency(@product.total) %></p>
+        <h1>Place Order:</h1>
+<%= form_tag('/orders', {:method => :post}) do %>
+  <div class="form-group">
+    <%= label_tag :order_quantity %>
+    <%= text_field_tag :order_quantity, nil, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= submit_tag "Buy Product", class: "btn btn-default"%>
+  </div>
+<% end %>
                   <!-- Split button -->
                 <div class="btn-group">
                   <button type="button" class="btn btn-danger">Buy</button>

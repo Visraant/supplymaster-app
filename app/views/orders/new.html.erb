@@ -1,0 +1,30 @@
+<h1>Place Order:</h1>
+<%= form_tag('/orders', {:method => :post}) do %>
+  <div class="form-group">
+    <%= label_tag : %>
+    <%= text_field_tag :name, nil, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :price %>
+    <%= text_field_tag :price, nil, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :image %>
+    <%= text_field_tag :image, nil, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :description %>
+    <%= text_field_tag :description, nil, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :stock_status%>
+    <%= text_field_tag :stock_status, nil, class: "form-control" %>
+  </div>
+ <div class="form-group">
+    <%= label_tag :delivery_time %>
+    <%= text_field_tag :delivery_time, nil, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= submit_tag "Add product", class: "btn btn-default"%>
+  </div>
+<% end %>
