@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
       user_id: current_user.id
     )
     
-    # flash[:success] = "You bought this product!"
+    flash[:success] = "You bought this product!"
     redirect_to "/orders/#{order.id}"
   end
 

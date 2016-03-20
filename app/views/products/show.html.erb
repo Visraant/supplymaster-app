@@ -16,8 +16,8 @@
         <h1>Place Order:</h1>
 <%= form_tag('/orders', {:method => :post}) do %>
   <div class="form-group">
-    <%= label_tag :order_quantity %>
-    <%= text_field_tag :order_quantity, nil, class: "form-control" %>
+    <%= label_tag :quantity %>
+    <%= text_field_tag :quantity, nil, class: "form-control" %>
   </div>
   <div class="form-group">
     <%= submit_tag "Buy Product", class: "btn btn-default"%>
