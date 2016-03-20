@@ -1,0 +1,15 @@
+<h1>All Suppliers:</h1>
+
+<div class="row">
+
+<% @suppliers.each do |supplier| %>
+
+ <div class="col-md-4">
+    <div class="well">
+      <h2>Name: <%= supplier.name %></h2>
+      <h3>Email: <%= supplier.email %></h3>
+      <h3>Phone: <%= supplier.phone %></h3>
+    </div>
+  </div>
+<% end %>
+</div>

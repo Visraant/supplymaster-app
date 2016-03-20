@@ -6,8 +6,10 @@
 
   <div class="col-md-4">
     <div class="well">
-     <h2><%= link_to "#{product.name}", "/products/#{product.id}"  %></h2> <h3>Price: <%= number_to_currency(product.price) %></h3>
-      <%= image_tag product.image %></a>
+     <h2><%= link_to "#{product.name}", "/products/#{product.id}"  %></h2>
+     <h3>Price: <%= number_to_currency(product.price) %></h3>
+     <h4>Supplier: <%= product.supplier.name %></h4>
+      <%= image_tag product.images.first.image_link %></a>
       <p>Description: <%= product.description %></p>
       <p>Stock Status: <%= product.stock_status %></p>
       <p>Delivery Time: <%= product.delivery_time %></p>

@@ -4,7 +4,9 @@
   <div class="col-md-4">
      <div class="well">
         <h2><%= @product.name %> Price: <%= number_to_currency(@product.price) %></h2>
-        <%= image_tag @product.image %></a>
+        <% @product.images.each do |image| %>
+        <%= image_tag image.image_link %></a>
+        <% end %>
         <p>Description: <%= @product.description %></p>
         <p>Stock Status: <%= @product.stock_status %></p>
         <p>Delivery Time: <%= @product.delivery_time %></p>
@@ -20,7 +22,7 @@
                   </button>
                     <ul class="dropdown-menu">
                       <li><%= link_to "Edit Product", "/products/#{@product.id}/edit" %></li>
-                      <li><%= link_to "Add to Cart", "#{}" %></li>
+                      <li><%= link_to "Add Image", "#" %></li>
                       <li><a href="#">Product Detail</a></li>
                       <li role="separator" class="divider"></li>
                       <li><%= link_to "Delete Product", "/products/#{@product.id}", method: :delete %></li>
