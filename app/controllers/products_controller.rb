@@ -1,5 +1,10 @@
 class ProductsController < ApplicationController
   def index
+    if current_user
+      @products = current_user.products
+    else
+      redirect_to "/users/sign_in"
+    end
     @products = Product.all
     sort = params[:sort]
     sort_order = params[:sort_order]
@@ -9,7 +14,6 @@ class ProductsController < ApplicationController
     if params[:discount] == "true"
       @products = Product.where("price < ?", 5)
     end
-    render "index.html.erb"
   end
 
   def new
@@ -22,13 +26,20 @@ class ProductsController < ApplicationController
       image: params[:image],
       description: params[:description],
       stock_status: params[:stock_status],
-      delivery_time: params[:delivery_time]
+      delivery_time: params[:delivery_time],
+      user_id: current_user.id
     )
+    
     flash[:success] = "Product successfully created!"
     redirect_to "/products/#{product.id}"
   end
 
   def show
+    if current_user
+      @products = current_user.products
+    else
+      redirect_to "/users/sign_in"
+    end
     if params[:id] == "random"
       products = Product.all
       @product = products.sample

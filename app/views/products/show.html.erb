@@ -22,7 +22,7 @@
                   </button>
                     <ul class="dropdown-menu">
                       <li><%= link_to "Edit Product", "/products/#{@product.id}/edit" %></li>
-                      <li><%= link_to "Add Image", "#" %></li>
+                      <li><%= link_to "Add to Cart", "#{}" %></li>
                       <li><a href="#">Product Detail</a></li>
                       <li role="separator" class="divider"></li>
                       <li><%= link_to "Delete Product", "/products/#{@product.id}", method: :delete %></li>
