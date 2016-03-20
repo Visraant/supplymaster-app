@@ -28,6 +28,6 @@ Rails.application.routes.draw do
   patch '/images/:id' => 'images#update'
   delete '/images/:id' => 'images#destroy'
 
-  post '/products' => 'products#create'
-  get '/products/:id' => 'products#show'
+  post '/orders' => 'orders#create'
+  get '/orders/:id' => 'orders#show'
 end
