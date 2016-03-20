@@ -20,6 +20,10 @@
     <%= text_field_tag :quantity, nil, class: "form-control" %>
   </div>
   <div class="form-group">
+    <%= label_tag :product_ID %>
+    <%= text_field_tag :product_ID, nil, class: "form-control" %>
+  </div>
+  <div class="form-group">
     <%= submit_tag "Buy Product", class: "btn btn-default"%>
   </div>
 <% end %>
