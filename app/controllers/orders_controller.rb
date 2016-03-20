@@ -10,11 +10,12 @@ class OrdersController < ApplicationController
       user_id: current_user.id
     )
     
-    flash[:success] = "You bought this product!"
+    # flash[:success] = "You bought this product!"
     redirect_to "/orders/#{order.id}"
   end
 
   def show
+    @order = Order.find_by(id: params[:id])
     # if params[:id] == "random"
     #   orders = Order.all
     #   @order = order.sample
