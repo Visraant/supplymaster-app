@@ -23,6 +23,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find_by(id: params[:id])
+
     # if params[:id] == "random"
     #   orders = Order.all
     #   @order = order.sample
