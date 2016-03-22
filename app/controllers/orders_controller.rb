@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   def create
     order = Order.create(
       quantity: params[:quantity],
+
       # price: params[:price],
       # image: params[:image],
       # description: params[:description],
@@ -10,8 +11,13 @@ class OrdersController < ApplicationController
       user_id: current_user.id,
       product_id: params[:product_id]
     )
+    order.update(
+      subtotal: order.subtotal_calc,
+      tax: order.order_tax,
+      total: order.order_total)
     # flash[:success] = "You bought this product!"
-    subtotal = params[:quantity]*product_id.price
+    
+
     redirect_to "/orders/#{order.id}"
   end
 

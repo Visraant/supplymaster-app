@@ -1,4 +1,4 @@
-<h1>Order:</h1>
+<h1>Order Info:</h1>
 
 <div class="row">
   <div class="col-md-4">
@@ -6,6 +6,9 @@
         <h2>Order Quantity: <%= @order.quantity %></h2>
         <p>User ID: <%= @order.id %></p>
         <p>Product ID: <%= @order.product_id %></p>
+        <p>Subtotal: <%= number_to_currency(@order.subtotal) %></p>
+        <p>Tax: <%= number_to_currency(@order.tax) %></p>
+        <p>Total: <%= number_to_currency(@order.total) %></p>
       </div>
     </div>
   </div>
