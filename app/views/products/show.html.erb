@@ -27,7 +27,7 @@
       <%= submit_tag "Buy Product", class: "btn btn-default"%>
     </div>
     <% end %>
-    <p>All Categories: <% @product.categories.each do |category| %></p>
+    <p>Categories: <% @product.categories.each do |category| %></p>
     <ul>
     <li><a href="/products?category=<%= category.name %>"> <%= category.name %> </a></li>
     </ul>
