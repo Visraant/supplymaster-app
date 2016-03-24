@@ -1,6 +1,7 @@
 class Order < ActiveRecord::Base
   belongs_to :user
-  belongs_to :product
+  belongs_to :carted_products
+  has_many :products, through: :carted_products
   
   def subtotal_calc
     quantity * product.price
