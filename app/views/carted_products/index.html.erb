@@ -9,6 +9,7 @@
 
       <h2><%= carted_product.product.name %></h2>
       <h3>Quantity: <%= carted_product.quantity %></h3>
+      <p><%= link_to "Remove from cart", "/carted_products/#{carted_product.id}", method: :delete %></p>
     </div>
   </div>
 
