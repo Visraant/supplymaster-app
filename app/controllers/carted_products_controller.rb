@@ -1,4 +1,10 @@
 class CartedProductsController < ApplicationController
+  def index
+    if current_user
+      @carted_products = CartedProduct.find_by
+    end
+  end
+
   def create
     cartedproduct = CartedProduct.create(
       user_id: current_user.id,
