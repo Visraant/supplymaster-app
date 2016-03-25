@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   def create
+    
     order = Order.create(
       quantity: params[:quantity],
 
