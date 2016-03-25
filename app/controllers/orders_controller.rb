@@ -1,24 +1,28 @@
 class OrdersController < ApplicationController
   def create
-    
+    @carted_products = CartedProduct.where("status LIKE ? AND user_id = ?", "In Cart", current_user.id)
+
+    subtotal = 0
+
+    @carted_products.each do |carted_product|
+      subtotal = subtotal + (carted_product.product.price * carted_product.quantity)
+    end
+
+    tax = subtotal * 0.09
+    total = subtotal + tax
+
     order = Order.create(
-      quantity: params[:quantity],
-
-      # price: params[:price],
-      # image: params[:image],
-      # description: params[:description],
-      # stock_status: params[:stock_status],
-      # delivery_time: params[:delivery_time],
       user_id: current_user.id,
-      product_id: params[:product_id]
+      subtotal: subtotal,
+      tax: tax,
+      total: total
     )
-    order.update(
-      subtotal: order.subtotal_calc,
-      tax: order.order_tax,
-      total: order.order_total)
-    # flash[:success] = "You bought this product!"
-    
 
+    @carted_products.each do |carted_product|
+      carted_product.update(status: "Purchased")
+      carted_product.update(order_id: order.id)
+    end
+    flash[:success] = "You successfully completed the purchase!"
     redirect_to "/orders/#{order.id}"
   end
 

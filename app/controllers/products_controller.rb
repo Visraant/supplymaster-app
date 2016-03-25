@@ -31,7 +31,7 @@ class ProductsController < ApplicationController
       stock_status: params[:stock_status],
       delivery_time: params[:delivery_time],
       user_id: current_user.id
-    )
+      )
     
     flash[:success] = "Product successfully created!"
     redirect_to "/products/#{product.id}"
@@ -61,7 +61,7 @@ class ProductsController < ApplicationController
       description: params[:description],
       stock_status: params[:stock_status],
       delivery_time: params[:delivery_time]
-    )
+      )
     flash[:success] = "Product successfully updated!"
     redirect_to "/products/#{@product.id}"
   end

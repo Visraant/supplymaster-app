@@ -1,8 +1,9 @@
 class CartedProductsController < ApplicationController
   def index
-    @carted_products = CartedProduct.all
     if current_user
-      @carted_products = current_user.carted_products
+      @carted_products = CartedProduct.where("status LIKE ? AND user_id = ?", "In Cart", current_user.id)
+    else
+      redirect_to '/users/sign_up'
     end
   end
 
