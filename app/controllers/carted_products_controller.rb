@@ -1,7 +1,8 @@
 class CartedProductsController < ApplicationController
   def index
+    @carted_products = CartedProduct.all
     if current_user
-      @carted_products = CartedProduct.find_by
+      @carted_products = current_user.carted_products
     end
   end
 

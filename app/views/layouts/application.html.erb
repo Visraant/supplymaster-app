@@ -56,9 +56,9 @@
               <% if current_user == nil %>
                   <li><%= link_to "Sign In", "/users/sign_in" %></li>
               <% else %>
+                  <li><a href="/carted_products">My Cart</a></li>
                   <li> <%= link_to "Log Out", "/users/sign_out", method: :delete %></li> 
               <% end %>
-            <li><a href="#">Something else here</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Separated link</a></li>
           </ul>
