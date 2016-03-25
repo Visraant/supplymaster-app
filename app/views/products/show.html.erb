@@ -14,7 +14,7 @@
     <p>Tax: <%= number_to_currency(@product.tax) %></p>
     <p>Total Cost: <%= number_to_currency(@product.total) %></p>
     <h1>Place Order:</h1>
-    <%= form_tag('/orders', {:method => :post}) do %>
+    <%= form_tag('/carted_products', {:method => :post}) do %>
     <div class="form-group">
       <%= label_tag :quantity %>
       <%= text_field_tag :quantity, nil, class: "form-control" %>
@@ -22,9 +22,10 @@
     <div class="form-group">
       <!-- <%= label_tag :product_id, "Please don't change the number in this field:" %> -->
       <%= hidden_field_tag :product_id, @product.id, class: "form-control" %>
+      <%= hidden_field_tag :status, "In Cart", class: "form-control" %>
     </div>
     <div class="form-group">
-      <%= submit_tag "Buy Product", class: "btn btn-default"%>
+      <%= submit_tag "Add to Cart", class: "btn btn-default"%>
     </div>
     <% end %>
     <p>Categories: <% @product.categories.each do |category| %></p>
