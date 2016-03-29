@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_admin!, except: [:index, :show, :search]
+
   def index
     # if current_user
     #   @products = current_user.products
@@ -38,8 +40,8 @@ class ProductsController < ApplicationController
         delivery_time: params[:delivery_time],
         user_id: current_user.id
       )
-    flash[:success] = "Product successfully created!"
-    redirect_to "/products/#{product.id}"
+      flash[:success] = "Product successfully created!"
+      redirect_to "/products/#{product.id}"
 
     else
       redirect_to "/"
@@ -101,9 +103,11 @@ class ProductsController < ApplicationController
     render 'index.html.erb'
   end
 
+  private
+
   def authenticate_admin!
     unless current_user && current_user.admin
-      redirect_to
+      redirect_to "/"
     end
   end
 end
