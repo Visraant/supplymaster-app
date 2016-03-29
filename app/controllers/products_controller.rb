@@ -34,7 +34,7 @@ class ProductsController < ApplicationController
       product = Product.create(
         name: params[:name],
         price: params[:price],
-        image: params[:image],
+        # image: params[:image],
         description: params[:description],
         stock_status: params[:stock_status],
         delivery_time: params[:delivery_time],
