@@ -18,10 +18,8 @@ class OrdersController < ApplicationController
       total: total
     )
 
-    @carted_products.each do |carted_product|
-      carted_product.update(status: "Purchased")
-      carted_product.update(order_id: order.id)
-    end
+    @carted_products.update_all(status: "Purchased", order_id: order.id)
+    
     flash[:success] = "You successfully completed the purchase!"
     redirect_to "/orders/#{order.id}"
   end

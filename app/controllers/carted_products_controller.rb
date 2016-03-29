@@ -5,6 +5,9 @@ class CartedProductsController < ApplicationController
     else
       redirect_to '/users/sign_up'
     end
+    if @carted_products.product.quantity = nil
+      redirect_to '/'
+    end
   end
 
   def create
