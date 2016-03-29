@@ -1,4 +1,5 @@
 class CartedProductsController < ApplicationController
+  before_action :authenticate_user!
   def index
     if current_user
       @carted_products = CartedProduct.where("status LIKE ? AND user_id = ?", "In Cart", current_user.id)

@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
   def create
     @carted_products = CartedProduct.where("status LIKE ? AND user_id = ?", "In Cart", current_user.id)
 
