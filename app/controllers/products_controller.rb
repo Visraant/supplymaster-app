@@ -28,18 +28,22 @@ class ProductsController < ApplicationController
   end
 
   def create
-    product = Product.create(
-      name: params[:name],
-      price: params[:price],
-      image: params[:image],
-      description: params[:description],
-      stock_status: params[:stock_status],
-      delivery_time: params[:delivery_time],
-      user_id: current_user.id
-    )
-    
+    if current_user && current_user.admin
+      product = Product.create(
+        name: params[:name],
+        price: params[:price],
+        image: params[:image],
+        description: params[:description],
+        stock_status: params[:stock_status],
+        delivery_time: params[:delivery_time],
+        user_id: current_user.id
+      )
     flash[:success] = "Product successfully created!"
     redirect_to "/products/#{product.id}"
+
+    else
+      redirect_to "/"
+    end
   end
 
   def show
@@ -95,5 +99,11 @@ class ProductsController < ApplicationController
     search_term = params[:search]
     @products = Product.where("name LIKE ?", "%#{search_term}%")
     render 'index.html.erb'
+  end
+
+  def authenticate_admin!
+    unless current_user && current_user.admin
+      redirect_to
+    end
   end
 end
