@@ -5,7 +5,8 @@ class CartedProductsController < ApplicationController
     else
       redirect_to '/users/sign_up'
     end
-    if @carted_products.product.quantity = nil
+    if @carted_products.length == 0
+      flash[:warning] = "You don't have any items in your cart!"
       redirect_to '/'
     end
   end
