@@ -1,3 +1,4 @@
+<% if current_user && current_user.admin %>
 <h1>Edit a product</h1>
 <%= form_tag "/products/#{@product.id}", method: :patch do %>
   <div class="form-group">
@@ -27,4 +28,5 @@
   <div class="form-group">
     <%= submit_tag "Edit product", class: "btn btn-default" %>
   </div>
+<% end %>
 <% end %>

@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
   before_action :get_carted_products
 
   def get_carted_products
+    if current_user
     @carted_products = CartedProduct.where("status LIKE ? AND user_id = ?", "In Cart", current_user.id)
+  else
+    @carted_products = 0
+  end
   end
 end
