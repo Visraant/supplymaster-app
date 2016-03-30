@@ -22,6 +22,8 @@ class ProductsController < ApplicationController
   end
 
   def new
+    @product = Product.new
+    @product.save
     if current_user && current_user.admin
       render 'new.html.erb'
     else
@@ -31,17 +33,22 @@ class ProductsController < ApplicationController
 
   def create
     if current_user && current_user.admin
-      product = Product.create(
+      @product = Product.create(
         name: params[:name],
         price: params[:price],
         # image: params[:image],
         description: params[:description],
         stock_status: params[:stock_status],
         delivery_time: params[:delivery_time],
+        supplier_id: params[:supplier_id],
         user_id: current_user.id
       )
-      flash[:success] = "Product successfully created!"
-      redirect_to "/products/#{product.id}"
+      if @product.save
+        flash[:success] = "Product successfully created!"
+        redirect_to "/products/#{product.id}"
+      else
+        render "new.html.erb"
+      end
 
     else
       redirect_to "/"
@@ -62,7 +69,7 @@ class ProductsController < ApplicationController
       product_id = params[:id]
       @product = Product.find_by(id: product_id)
     else
-      redirect_to "/"
+      redirect_to "/products/#{@product.id}/edit"
     end
   end
 
@@ -76,12 +83,15 @@ class ProductsController < ApplicationController
         image: params[:image],
         description: params[:description],
         stock_status: params[:stock_status],
-        delivery_time: params[:delivery_time]
+        delivery_time: params[:delivery_time],
+        supplier_id: params[:supplier_id]
       )
-      flash[:success] = "Product successfully updated!"
-      redirect_to "/products/#{@product.id}"
-    else
-      redirect_to "/"
+      if @product.save
+        flash[:success] = "Product successfully updated!"
+        redirect_to "/products/#{@product.id}"
+      else
+        render "edit.html.erb"
+      end
     end
   end
 
